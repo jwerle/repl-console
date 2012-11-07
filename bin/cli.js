@@ -26,6 +26,10 @@ var REPLConsole = require('../lib/console').REPLConsole
   , replLocal
   , parser
   , opts
+  , name
+  , locale
+  , port
+  , host
 
 opts = [
     { full: 'start' }
@@ -36,23 +40,36 @@ parser.parse(args);
 cmds = parser.cmds;
 opts = parser.opts;
 
+name    = cmds[1] || 'anon';
+locale  = cmds[2] || 'local';
+port    = cmds[3] || false;
+
 switch (cmds[0]) {
   case 'start' :
     console.log("Starting REPL Console session...".green);
-    replSession = new REPLConsole(cmds[1], cmds[2], {
-      name    : cmds[1] || 'anon',
-      locale  : cmds[2] || 'local'
-    }, cmds[3]);
+    replSession = new REPLConsole(name, locale, port);
+
+    replSession.assign({
+      name    : name,
+      locale  : locale
+    });
 
     replSession.start();
 
-    if (cmds[2] === 'remote') {
+    if (locale === 'remote') {
       console.log("Starting local REPL Console session...".green);
-      replLocal = new REPLConsole(cmds[1], 'local', {
-
-      }, cmds[3]);
+      replLocal = new REPLConsole(name, 'local', port);
 
       replLocal.start();
     }
   break;
+
+  case 'connect' :
+    host = name;
+    port = locale;
+    replConnection = new REPLConsole(name, 'local', port);
+
+    replConnection.connect(port, host);
+  break;
 }
+
