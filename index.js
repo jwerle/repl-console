@@ -1,8 +1,6 @@
-#!/usr/bin/env node
-
 /*
  * REPL Console
- * Copyright 2012 John Doe (john.doe@email.com)
+ * Copyright 2012 Joseph Werle (joseph.werle@gmail.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,4 +23,4 @@
 /*
   @exports repl-console
 */
-module.exports = require('./lib/console');
+module.exports = require('./lib/console').REPLConsole;

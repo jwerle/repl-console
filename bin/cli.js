@@ -2,7 +2,7 @@
 
 /*
  * REPL Console
- * Copyright 2012 John Doe (john.doe@email.com)
+ * Copyright 2012 Joseph Werle (joseph.werle@gmail.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,9 +31,7 @@ var REPLConsole = require('../lib/console').REPLConsole
   , port
   , host
 
-opts = [
-    { full: 'start' }
-];
+opts = [];
 
 parser = new parseopts.Parser(opts);
 parser.parse(args);
