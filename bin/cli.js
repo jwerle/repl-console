@@ -28,7 +28,7 @@ var REPLConsole = require('../lib/console').REPLConsole
   , opts
 
 opts = [
-    { full: 'init' }
+    { full: 'start' }
 ];
 
 parser = new parseopts.Parser(opts);
@@ -37,7 +37,7 @@ cmds = parser.cmds;
 opts = parser.opts;
 
 switch (cmds[0]) {
-  case 'init' :
+  case 'start' :
     console.log("Starting REPL Console session...".green);
     replSession = new REPLConsole(cmds[1], cmds[2], {
       name    : cmds[1] || 'anon',
