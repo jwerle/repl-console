@@ -1,0 +1,16 @@
+{
+  "name": "",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [],
+  "author": "John Doe <john.doe@mail.com>",
+  "main": "index",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/git/git.git"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  }
+}
