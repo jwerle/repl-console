@@ -1,14 +1,14 @@
 {
-  "name": "",
+  "name": "repl-console",
   "version": "0.0.1",
   "description": "",
   "keywords": [],
-  "author": "John Doe <john.doe@mail.com>",
+  "author": "Joseph Werle <joseph.werle@gmail.com>",
   "main": "index",
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "git://github.com/git/git.git"
+    "url": "git://github.com/jwerle/repl-console.git"
   },
   "engines": {
     "node": ">= 0.8.0"
