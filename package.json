@@ -2,10 +2,17 @@
   "name": "repl-console",
   "version": "0.0.1",
   "description": "",
-  "keywords": [],
+  "keywords": [
+    "repl",
+    "console",
+    "server"
+  ],
   "author": "Joseph Werle <joseph.werle@gmail.com>",
   "main": "index",
-  "dependencies": {},
+  "dependencies": {
+    "utilities" : "0.0.x",
+    "colors"    : "0.6.0-1"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/jwerle/repl-console.git"

@@ -1,5 +1,7 @@
+#!/usr/bin/env node
+
 /*
- * Node-Module
+ * REPL Console
  * Copyright 2012 John Doe (john.doe@email.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,3 +16,43 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+require('colors');
+
+var REPLConsole = require('../lib/console').REPLConsole
+  , parseopts   = require('../deps/parseopts')
+  , args        = process.argv.slice(2)
+  , replSession
+  , replLocal
+  , parser
+  , opts
+
+opts = [
+    { full: 'init' }
+];
+
+parser = new parseopts.Parser(opts);
+parser.parse(args);
+cmds = parser.cmds;
+opts = parser.opts;
+
+switch (cmds[0]) {
+  case 'init' :
+    console.log("Starting REPL Console session...".green);
+    replSession = new REPLConsole(cmds[1], cmds[2], {
+      name    : cmds[1] || 'anon',
+      locale  : cmds[2] || 'local'
+    }, cmds[3]);
+
+    replSession.start();
+
+    if (cmds[2] === 'remote') {
+      console.log("Starting local REPL Console session...".green);
+      replLocal = new REPLConsole(cmds[1], 'local', {
+
+      }, cmds[3]);
+
+      replLocal.start();
+    }
+  break;
+}
