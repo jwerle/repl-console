@@ -9,6 +9,9 @@
   ],
   "author": "Joseph Werle <joseph.werle@gmail.com>",
   "main": "index",
+  "bin" : {
+    "repl-console": "./bin/cli.js"
+  },
   "dependencies": {
     "utilities" : "0.0.x",
     "colors"    : "0.6.0-1"
