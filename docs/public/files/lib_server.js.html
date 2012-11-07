@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib&#x2F;server.js</title>
+    <link rel="stylesheet" href="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;3.7.0&#x2F;build&#x2F;cssgrids&#x2F;cssgrids-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="..&#x2F;assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="..&#x2F;assets/favicon.png">
+    <script src="http:&#x2F;&#x2F;yui.yahooapis.com&#x2F;combo?3.7.0&#x2F;build&#x2F;yui&#x2F;yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="..&#x2F;assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="..&#x2F;classes/context.html">context</a></li>
+            
+                <li><a href="..&#x2F;classes/REPLConsole.html">REPLConsole</a></li>
+            
+                <li><a href="..&#x2F;classes/Server.html">Server</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="..&#x2F;modules/console.html">console</a></li>
+            
+                <li><a href="..&#x2F;modules/context.html">context</a></li>
+            
+                <li><a href="..&#x2F;modules/server.html">server</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: lib&#x2F;server.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x2F;*
+ * REPL Console
+ * Copyright 2012 Joseph Werle (joseph.werle@gmail.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *         http:&#x2F;&#x2F;www.apache.org&#x2F;licenses&#x2F;LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *&#x2F;
+&#x2F;**
+ @module server
+**&#x2F;
+require(&#x27;colors&#x27;);
+
+var net     = require(&#x27;net&#x27;)
+  , events  = require(&#x27;events&#x27;)
+  , utils   = require(&#x27;utilities&#x27;)
+  , emit
+  , genGuid
+
+emit = function(server, events, args) {
+  server.emit.apply(server, events.concat(Array.prototype.splice.apply(args, [0])));
+}
+
+genGuid = function(map) {
+  var guid = Math.floor(Math.random() * (10&lt;&lt;10^10));
+
+  return (map[guid] ? genGuid(map) : guid);
+}
+
+var server = {};
+
+&#x2F;**
+  Constructs a new instance of a Server
+
+  @class Server
+  @constructor
+  @extends EventEmitter
+  @param {String} name The name of the server
+**&#x2F;
+server.Server = function(name) {
+  &#x2F;**
+    The server name
+
+    @property name
+    @public
+    @type String
+  **&#x2F;
+  this.name = name || &quot;anon&quot;;
+};
+
+server.Server.prototype = {
+  _instance     : null,
+  _initialized  : false,
+  _connections  : {},
+
+  &#x2F;**
+    Connects to a server. Emits a &#x27;server.connected&#x27; event.
+
+    @method initialize
+    @public
+  **&#x2F;
+  initialize : function() {
+    var self = this
+
+    this._instance = net.createServer(function(){
+      emit(self, [server.Server.SERVER_CONNECTED], arguments);
+    });
+
+    this._initialized = true;
+
+    return this;
+  },
+
+  &#x2F;**
+    @method start
+    @public
+    @description Starts the server listening on a port
+    @param {Number} port The port to listen on
+  **&#x2F;
+  start : function(port) {
+    if (this._initialized !== true &amp;&amp; typeof this._instance === &#x27;object&#x27;) {
+      return false;
+    }
+
+    this._instance.listen(port || 4000);
+
+    return this;
+  },
+
+  &#x2F;**
+    @method connect
+    @public
+    @description Connects to a given host and port. Emits a &#x27;connection.connected&#x27; event.
+    @param {Number} port The port to connect to
+    @param {String} host The host to connect to
+  **&#x2F;
+  connect : function(port, host) {
+    var self = this, guid = genGuid(this._connections)
+
+    net.createConnection(port, host, function(){
+      var socket = this
+
+      self._connections[guid] = socket;
+
+      socket.on(&#x27;data&#x27;, function(connection){
+        emit(self, [server.Server.CONNECTION_DATA], arguments);
+      });
+
+      socket.on(&#x27;end&#x27;, function(connection){
+        emit(self, [server.Server.CONNECTION_END], arguments);
+      });
+
+      socket.on(&#x27;timeout&#x27;, function(connection){
+        emit(self, [server.Server.CONNECTION_TIMEOUT], arguments);
+      });
+
+      socket.on(&#x27;drain&#x27;, function(connection){
+        emit(self, [server.Server.CONNECTION_DRAIN], arguments);
+      });
+
+      socket.on(&#x27;error&#x27;, function(connection){
+        emit(self, [server.Server.CONNECTION_ERROR], arguments);
+      });
+
+      socket.on(&#x27;close&#x27;, function(connection){
+        emit(self, [server.Server.CONNECTION_CLOSE], arguments);
+      });
+
+      arguments[arguments.length -1] = socket;
+      emit(self, [server.Server.CONNECTION_CONNECTED], arguments);
+    })
+  }
+};
+
+&#x2F;**
+  Fired when the server recieves a connection
+
+  @event SERVER_CONNECTED 
+**&#x2F;
+server.Server.SERVER_CONNECTED = &#x27;server.connected&#x27;;
+
+&#x2F;**
+  Fired when a connection to a server emits data
+
+  @event CONNECTION_DATA 
+**&#x2F;
+server.Server.CONNECTION_DATA = &#x27;connection.data&#x27;;
+
+&#x2F;**
+  Fired when a connection to a server ends
+
+  @event CONNECTION_END
+**&#x2F;
+server.Server.CONNECTION_END = &#x27;connection.end&#x27;;
+
+&#x2F;**
+  Fired when a connection to a servers write buffer becomes empty. Can be used to throttle uploads.
+
+  @event CONNECTION_DRAIN
+**&#x2F;
+server.Server.CONNECTION_DRAIN = &#x27;connection.drain&#x27;;
+
+&#x2F;**
+  Fired when a connection to a server encounters an error
+
+  @event CONNECTION_ERROR
+**&#x2F;
+server.Server.CONNECTION_ERROR = &#x27;connection.error&#x27;;
+
+&#x2F;**
+  Fired when a connection to a server closes
+
+  @event CONNECTION_CLOSE
+**&#x2F;
+server.Server.CONNECTION_CLOSE = &#x27;connection.close&#x27;;
+
+&#x2F;**
+  Fired when a connection to a server is established
+
+  @event CONNECTION_CONNECTED
+**&#x2F;
+server.Server.CONNECTION_CONNECTED = &#x27;connection.connected&#x27;;
+
+&#x2F;**
+  Fired when a connection to a server times out
+
+  @event CONNECTION_TIMEOUT
+**&#x2F;
+server.Server.CONNECTION_TIMEOUT = &#x27;connection.timeout&#x27;;
+
+&#x2F;&#x2F; Inherit the EventEmitter
+server.Server.prototype = utils.mixin(server.Server.prototype, events.EventEmitter.prototype);
+
+module.exports = server;
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="..&#x2F;assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="..&#x2F;assets/js/yui-prettify.js"></script>
+<script src="..&#x2F;assets/../api.js"></script>
+<script src="..&#x2F;assets/js/api-filter.js"></script>
+<script src="..&#x2F;assets/js/api-list.js"></script>
+<script src="..&#x2F;assets/js/api-search.js"></script>
+<script src="..&#x2F;assets/js/apidocs.js"></script>
+</body>
+</html>

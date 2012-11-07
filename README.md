@@ -37,8 +37,6 @@ my-session-remote> name
 'joseph'
 ```
 
-## API
-
 
 Copyright and license
 ---------------------

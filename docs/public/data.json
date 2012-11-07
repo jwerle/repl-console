@@ -1,0 +1,529 @@
+{
+    "project": {},
+    "files": {
+        "lib/console.js": {
+            "name": "lib/console.js",
+            "modules": {
+                "console": 1
+            },
+            "classes": {
+                "REPLConsole": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/context.js": {
+            "name": "lib/context.js",
+            "modules": {
+                "context": 1
+            },
+            "classes": {
+                "context": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "lib/server.js": {
+            "name": "lib/server.js",
+            "modules": {
+                "server": 1
+            },
+            "classes": {
+                "Server": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "console": {
+            "name": "console",
+            "submodules": {},
+            "classes": {
+                "REPLConsole": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/console.js",
+            "line": 38,
+            "requires": [
+                "repl",
+                "utilities",
+                "child_process"
+            ]
+        },
+        "context": {
+            "name": "context",
+            "submodules": {},
+            "classes": {
+                "context": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/context.js",
+            "line": 21
+        },
+        "server": {
+            "name": "server",
+            "submodules": {},
+            "classes": {
+                "Server": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/server.js",
+            "line": 40
+        }
+    },
+    "classes": {
+        "REPLConsole": {
+            "name": "REPLConsole",
+            "shortname": "REPLConsole",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "console",
+            "namespace": "",
+            "file": "lib/console.js",
+            "line": 38,
+            "description": "Constructs a new instance of a Server",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the console instance",
+                    "type": "String"
+                },
+                {
+                    "name": "locale",
+                    "description": "The location of the repl console instance [local|remote]",
+                    "type": "String"
+                },
+                {
+                    "name": "port",
+                    "description": "The port for the remote repl server to listen on",
+                    "type": "Number"
+                },
+                {
+                    "name": "context",
+                    "description": "An object to bind to the context of the repl console instance",
+                    "type": "Object"
+                }
+            ]
+        },
+        "context": {
+            "name": "context",
+            "shortname": "context",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "context",
+            "namespace": "",
+            "file": "lib/context.js",
+            "line": 21
+        },
+        "Server": {
+            "name": "Server",
+            "shortname": "Server",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "server",
+            "namespace": "",
+            "file": "lib/server.js",
+            "line": 40,
+            "description": "Constructs a new instance of a Server",
+            "is_constructor": 1,
+            "extends": "EventEmitter",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the server",
+                    "type": "String"
+                }
+            ]
+        }
+    },
+    "classitems": [
+        {
+            "file": "lib/console.js",
+            "line": 49,
+            "description": "The REPL console instance name",
+            "itemtype": "property",
+            "name": "name",
+            "access": "public",
+            "tagname": "",
+            "type": "{String}",
+            "default": "\"anon\"",
+            "class": "REPLConsole",
+            "module": "console"
+        },
+        {
+            "file": "lib/console.js",
+            "line": 59,
+            "description": "The REPL console instance locale",
+            "itemtype": "property",
+            "name": "locale",
+            "access": "public",
+            "tagname": "",
+            "type": "{String}",
+            "default": "\"local\"",
+            "class": "REPLConsole",
+            "module": "console"
+        },
+        {
+            "file": "lib/console.js",
+            "line": 71,
+            "description": "The primitive repl object",
+            "itemtype": "property",
+            "name": "repl",
+            "access": "public",
+            "tagname": "",
+            "type": "{Object}",
+            "class": "REPLConsole",
+            "module": "console"
+        },
+        {
+            "file": "lib/console.js",
+            "line": 80,
+            "description": "The port for the remote repl console to listen on",
+            "itemtype": "property",
+            "name": "port",
+            "access": "public",
+            "tagname": "",
+            "type": "{Object}",
+            "default": "\"5001\"",
+            "class": "REPLConsole",
+            "module": "console"
+        },
+        {
+            "file": "lib/console.js",
+            "line": 90,
+            "description": "The repl server object",
+            "itemtype": "property",
+            "name": "server",
+            "access": "public",
+            "tagname": "",
+            "type": "{Server}",
+            "class": "REPLConsole",
+            "module": "console"
+        },
+        {
+            "file": "lib/console.js",
+            "line": 99,
+            "description": "The repl console signature",
+            "itemtype": "property",
+            "name": "sig",
+            "access": "public",
+            "tagname": "",
+            "type": "String",
+            "class": "REPLConsole",
+            "module": "console"
+        },
+        {
+            "file": "lib/console.js",
+            "line": 108,
+            "description": "The REPL console context variables",
+            "itemtype": "property",
+            "name": "context",
+            "access": "public",
+            "tagname": "",
+            "type": "{Object}",
+            "class": "REPLConsole",
+            "module": "console"
+        },
+        {
+            "file": "lib/console.js",
+            "line": 124,
+            "description": "Local locale connstant",
+            "itemtype": "property",
+            "name": "LOCAL_LOCALE",
+            "static": 1,
+            "final": 1,
+            "type": "{String}",
+            "default": "",
+            "class": "REPLConsole",
+            "module": "console"
+        },
+        {
+            "file": "lib/console.js",
+            "line": 135,
+            "description": "Remote locale connstant",
+            "itemtype": "property",
+            "name": "REMOTE_LOCALE",
+            "static": 1,
+            "final": 1,
+            "type": "{String}",
+            "default": "",
+            "class": "REPLConsole",
+            "module": "console"
+        },
+        {
+            "file": "lib/console.js",
+            "line": 148,
+            "description": "Starts the repl console session",
+            "itemtype": "method",
+            "name": "start",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "async": 1,
+            "class": "REPLConsole",
+            "module": "console"
+        },
+        {
+            "file": "lib/console.js",
+            "line": 188,
+            "description": "Shortcut to context.assign() to assign",
+            "itemtype": "method",
+            "name": "assign",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The key to reference the variable being assigned",
+                    "type": "String"
+                },
+                {
+                    "name": "val",
+                    "description": "The value of the variable being assigned",
+                    "type": "Mixed"
+                }
+            ],
+            "class": "REPLConsole",
+            "module": "console"
+        },
+        {
+            "file": "lib/console.js",
+            "line": 204,
+            "description": "Connects to a remote repl console server using telnet",
+            "itemtype": "method",
+            "name": "connect",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "async": 1,
+            "params": [
+                {
+                    "name": "port",
+                    "description": "Port override value. Will override the port set by the instance",
+                    "type": "Number"
+                }
+            ],
+            "class": "REPLConsole",
+            "module": "console"
+        },
+        {
+            "file": "lib/context.js",
+            "line": 26,
+            "itemtype": "property",
+            "name": "context",
+            "access": "public",
+            "tagname": "",
+            "type": "Object",
+            "description": "The repl context scope",
+            "class": "context",
+            "module": "context"
+        },
+        {
+            "file": "lib/context.js",
+            "line": 34,
+            "itemtype": "method",
+            "name": "exit",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "description": "Exits the repl console session",
+            "class": "context",
+            "module": "context"
+        },
+        {
+            "file": "lib/context.js",
+            "line": 45,
+            "itemtype": "method",
+            "name": "assign",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "description": "Assigns a variable to the context",
+            "params": [
+                {
+                    "name": "key",
+                    "description": "The key to reference the variable being assigned, if an object is passed\neach key in the object is mapped as a variable.",
+                    "type": "Mixed"
+                },
+                {
+                    "name": "val",
+                    "description": "The value of the variable being assigned",
+                    "type": "Mixed"
+                }
+            ],
+            "return": {
+                "description": "context"
+            },
+            "class": "context",
+            "module": "context"
+        },
+        {
+            "file": "lib/context.js",
+            "line": 71,
+            "itemtype": "property",
+            "name": "utils",
+            "access": "public",
+            "tagname": "",
+            "static": 1,
+            "type": "{Object}",
+            "description": "Utility object",
+            "class": "context",
+            "module": "context"
+        },
+        {
+            "file": "lib/server.js",
+            "line": 49,
+            "description": "The server name",
+            "itemtype": "property",
+            "name": "name",
+            "access": "public",
+            "tagname": "",
+            "type": "String",
+            "class": "Server",
+            "module": "server"
+        },
+        {
+            "file": "lib/server.js",
+            "line": 64,
+            "description": "Connects to a server. Emits a 'server.connected' event.",
+            "itemtype": "method",
+            "name": "initialize",
+            "access": "public",
+            "tagname": "",
+            "class": "Server",
+            "module": "server"
+        },
+        {
+            "file": "lib/server.js",
+            "line": 82,
+            "itemtype": "method",
+            "name": "start",
+            "access": "public",
+            "tagname": "",
+            "description": "Starts the server listening on a port",
+            "params": [
+                {
+                    "name": "port",
+                    "description": "The port to listen on",
+                    "type": "Number"
+                }
+            ],
+            "class": "Server",
+            "module": "server"
+        },
+        {
+            "file": "lib/server.js",
+            "line": 98,
+            "itemtype": "method",
+            "name": "connect",
+            "access": "public",
+            "tagname": "",
+            "description": "Connects to a given host and port. Emits a 'connection.connected' event.",
+            "params": [
+                {
+                    "name": "port",
+                    "description": "The port to connect to",
+                    "type": "Number"
+                },
+                {
+                    "name": "host",
+                    "description": "The host to connect to",
+                    "type": "String"
+                }
+            ],
+            "class": "Server",
+            "module": "server"
+        },
+        {
+            "file": "lib/server.js",
+            "line": 143,
+            "description": "Fired when the server recieves a connection",
+            "itemtype": "event",
+            "name": "SERVER_CONNECTED",
+            "class": "Server",
+            "module": "server"
+        },
+        {
+            "file": "lib/server.js",
+            "line": 150,
+            "description": "Fired when a connection to a server emits data",
+            "itemtype": "event",
+            "name": "CONNECTION_DATA",
+            "class": "Server",
+            "module": "server"
+        },
+        {
+            "file": "lib/server.js",
+            "line": 157,
+            "description": "Fired when a connection to a server ends",
+            "itemtype": "event",
+            "name": "CONNECTION_END",
+            "class": "Server",
+            "module": "server"
+        },
+        {
+            "file": "lib/server.js",
+            "line": 164,
+            "description": "Fired when a connection to a servers write buffer becomes empty. Can be used to throttle uploads.",
+            "itemtype": "event",
+            "name": "CONNECTION_DRAIN",
+            "class": "Server",
+            "module": "server"
+        },
+        {
+            "file": "lib/server.js",
+            "line": 171,
+            "description": "Fired when a connection to a server encounters an error",
+            "itemtype": "event",
+            "name": "CONNECTION_ERROR",
+            "class": "Server",
+            "module": "server"
+        },
+        {
+            "file": "lib/server.js",
+            "line": 178,
+            "description": "Fired when a connection to a server closes",
+            "itemtype": "event",
+            "name": "CONNECTION_CLOSE",
+            "class": "Server",
+            "module": "server"
+        },
+        {
+            "file": "lib/server.js",
+            "line": 185,
+            "description": "Fired when a connection to a server is established",
+            "itemtype": "event",
+            "name": "CONNECTION_CONNECTED",
+            "class": "Server",
+            "module": "server"
+        },
+        {
+            "file": "lib/server.js",
+            "line": 192,
+            "description": "Fired when a connection to a server times out",
+            "itemtype": "event",
+            "name": "CONNECTION_TIMEOUT",
+            "class": "Server",
+            "module": "server"
+        }
+    ],
+    "warnings": []
+}

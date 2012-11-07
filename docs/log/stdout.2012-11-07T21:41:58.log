@@ -1,0 +1,48 @@
+[Wed, 07 Nov 2012 21:41:53 GMT] INFO Server starting with config: {
+  "environment": "production",
+  "workers": 2,
+  "port": "8080",
+  "spdy": null,
+  "ssl": null,
+  "debug": false,
+  "rotateWorkers": true,
+  "rotationWindow": 7200000,
+  "rotationTimeout": 300000,
+  "logDir": "/home/joseph/repos/repl-console/docs/log",
+  "gracefulShutdownTimeout": 30000,
+  "heartbeatInterval": 5000,
+  "heartbeatWindow": 20000,
+  "staticFilePath": "/home/joseph/repos/repl-console/docs/public",
+  "sessions": {
+    "store": "cookie",
+    "key": "sid",
+    "expiry": 1209600
+  },
+  "cookieSessionKey": "sdata",
+  "metrics": null,
+  "i18n": {
+    "defaultLocale": "en-us",
+    "loadPaths": [
+      "/home/joseph/repos/repl-console/docs/config/locales"
+    ]
+  },
+  "hostname": "localhost",
+  "fullHostname": "http://localhost:8080",
+  "connectCompatibility": false,
+  "detailedErrors": false,
+  "model": {
+    "defaultAdapter": "mongo"
+  },
+  "db": {
+    "mongo": {
+      "username": null,
+      "dbname": "production",
+      "prefix": null,
+      "password": null,
+      "host": "localhost",
+      "port": 27017
+    }
+  }
+}
+[Wed, 07 Nov 2012 21:41:53 GMT] INFO Creating 2 worker processes.
+[Wed, 07 Nov 2012 21:41:53 GMT] INFO Server worker running in production on port 8080 with a PID of: 2708
