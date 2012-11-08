@@ -1,6 +1,6 @@
 {
   "name": "repl-console",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "",
   "keywords": [
     "repl",
@@ -14,7 +14,8 @@
   },
   "dependencies": {
     "utilities" : "0.0.x",
-    "colors"    : "0.6.0-1"
+    "colors"    : "0.6.0-1",
+    "keypress"  : "0.1.0"
   },
   "repository": {
     "type": "git",
