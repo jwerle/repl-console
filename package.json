@@ -1,6 +1,6 @@
 {
   "name": "repl-console",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "",
   "keywords": [
     "repl",
@@ -22,6 +22,6 @@
     "url": "git://github.com/jwerle/repl-console.git"
   },
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.6.x"
   }
 }
